@@ -1,1 +1,0 @@
-{"version":3,"sources":["../../src/print.js"],"names":["printMe","console","log"],"mappings":";;;;;kBAAwBA,O;AAAT,SAASA,OAAT,GAAmB;AAChCC,UAAQC,GAAR,CAAY,4BAAZ;AACD","file":"print.js","sourcesContent":["export default function printMe() {\r\n  console.log('i get called from print.js');\r\n}"]}
