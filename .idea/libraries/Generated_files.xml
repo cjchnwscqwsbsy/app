@@ -4,11 +4,13 @@
       <sourceFilesUrls>
         <item url="file://$PROJECT_DIR$/dist/src/index.js" />
         <item url="file://$PROJECT_DIR$/dist/src/print.js" />
+        <item url="file://$PROJECT_DIR$/dist/webpack.config.js" />
       </sourceFilesUrls>
     </properties>
     <CLASSES>
       <root url="file://$PROJECT_DIR$/dist/src/index.js" />
       <root url="file://$PROJECT_DIR$/dist/src/print.js" />
+      <root url="file://$PROJECT_DIR$/dist/webpack.config.js" />
     </CLASSES>
     <SOURCES />
   </library>
