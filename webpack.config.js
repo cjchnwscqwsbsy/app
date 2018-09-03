@@ -1,19 +1,22 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
-    app:'./src/index.js',
-    print:'./src/print.js'
+    app:path.resolve(__dirname,'./src/index.js'),
   },
   devtool: 'inline-source-map',
   devServer: {
-    contentBase: './dist'
+    contentBase: path.resolve(__dirname,'./dist'),
+    hot: true
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
-    new HtmlWebpackPlugin({title:'Output Management'})
+    new HtmlWebpackPlugin({title:'Output Management'}),
+    new webpack.NamedModulesPlugin(),
+    new webpack.HotModuleReplacementPlugin(),
   ],
   output: {
     path: path.resolve(__dirname,'dist'),
@@ -21,12 +24,12 @@ module.exports = {
     publicPath: '/'
   },
   module:{
-      rules: [{
-          test:/\.css$/,
-          use:['style-loader','css-loader']
-      },{
-          test:/\.(png|svg|jpg|gif|jpeg)/,
-          use: ['file-loader']
-      }]
+    rules: [{
+      test:/\.css$/,
+      use:['style-loader','css-loader']
+    },{
+      test:/\.(png|svg|jpg|gif|jpeg)/,
+      use: ['file-loader']
+    }]
   }
 };
