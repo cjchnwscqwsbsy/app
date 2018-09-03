@@ -5,8 +5,8 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "webpack",
-    "start": "webpack-dev-server --open",
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --open --config webpack.dev.js",
     "server": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
