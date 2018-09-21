@@ -1,10 +1,8 @@
-import _ from 'loadsh';
-function component() {
-  const element = document.createElement('div');
-  const btn = document.createElement('button');
-  element.innerHTML = _.join(['hello','webpack'],'');
-  btn.innerHTML = 'click me and check the';
-  element.appendChild(btn);
-  return element;
+import React,{Component} from 'react';
+import ReactDom from 'react-dom';
+class App extends Component {
+  render(){
+    return <h1>hello world!</h1>
+  }
 }
-document.body.appendChild(component());
+ReactDom.render(<App/>,document.getElementById('root'));
