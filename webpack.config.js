@@ -16,7 +16,7 @@ module.exports = {
   ],
   output: {
     path: path.resolve(__dirname,'build'),
-    filename: 'bundle.js'
+    filename: '[name].bundle.js'
   },
   module: {
     //配置加载器
@@ -28,6 +28,27 @@ module.exports = {
         options: {
           presets:['env','react']
         }
+      }
+    },{
+      test:/\.css$/,
+      use:[{
+        loader: 'style-loader'
+      },{
+        loader:'css-loader',
+        options: {
+          importLoaders:1
+        }
+      },{
+        loader: 'postcss-loader',
+        options: {
+          plugins:() => [require('autoprefixer'),require('precss'),require('postcss-flexbugs-fixes')]
+        }
+      }],
+    },{
+      test:[/\.gif$/,/\.jpe?g$/,/\.png$/],
+      loader: 'url-loader',
+      options: {
+        limit:10000
       }
     }]
   }
