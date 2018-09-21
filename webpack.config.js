@@ -26,7 +26,7 @@ module.exports = {
       use: {       //babel的配置参数，也可以放在.babelrc文件中
         loader:'babel-loader',    //加载器名称
         options: {
-          presets:['env','react'],
+          presets:['env','react','stage-2'],
           plugin:['react-hot-loader/babel']
         }
       }
