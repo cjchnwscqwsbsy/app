@@ -26,7 +26,8 @@ module.exports = {
       use: {       //babel的配置参数，也可以放在.babelrc文件中
         loader:'babel-loader',    //加载器名称
         options: {
-          presets:['env','react']
+          presets:['env','react'],
+          plugin:['react-hot-loader/babel']
         }
       }
     },{
@@ -46,10 +47,14 @@ module.exports = {
       }],
     },{
       test:[/\.gif$/,/\.jpe?g$/,/\.png$/],
-      loader: 'url-loader',
+      use: 'url-loader',
       options: {
         limit:10000
       }
+    },{
+      test:'/\.js$/',
+      enforce: 'pre',
+      use: 'eslint-loader'
     }]
   }
 };
