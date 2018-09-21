@@ -14,6 +14,9 @@ module.exports = {
       favicon:'./public/favicon.ico'
     }),
   ],
+  devServer: {
+    contentBase:path.resolve(__dirname,'build')
+  },
   output: {
     path: path.resolve(__dirname,'build'),
     filename: '[name].bundle.js'
