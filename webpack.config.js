@@ -15,24 +15,20 @@ module.exports = {
     }),
   ],
   devServer: {
+    // publicPath:,
     contentBase:path.resolve(__dirname,'build')
   },
   output: {
     path: path.resolve(__dirname,'build'),
-    filename: '[name].bundle.js'
+    filename: '[name].bundle.js',
+    // publicPath: '',
   },
   module: {
     //配置加载器
     rules: [{
-      test:/\.js$/,    //配置处理的文件格式(常用正则)
+      test:/\.js$/,
       exclude: /node_modules/,
-      use: {       //babel的配置参数，也可以放在.babelrc文件中
-        loader:'babel-loader',    //加载器名称
-        options: {
-          presets:['env','react','stage-2'],
-          plugin:['react-hot-loader/babel']
-        }
-      }
+      use: 'babel-loader'
     },{
       test:/\.css$/,
       use:[{
@@ -50,13 +46,16 @@ module.exports = {
       }],
     },{
       test:[/\.gif$/,/\.jpe?g$/,/\.png$/],
-      use: 'url-loader',
-      options: {
-        limit:10000
-      }
+      use: {
+        loader:'url-loader',
+        options: {
+          limit:10000
+        }
+      },
     },{
-      test:'/\.js$/',
+      test: /\.(js|tsx|jsx)$/,
       enforce: 'pre',
+      exclude: /node_modules/,
       use: 'eslint-loader'
     }]
   }
