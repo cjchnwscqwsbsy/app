@@ -1,10 +1,7 @@
-import React, {Component} from 'react';
+import React from 'react';
 import ReactDom from 'react-dom';
+import {Provider} from 'react-redux';
+import store from './store';
+import App from './pages/app';
 
-class App extends Component {
-  render(){
-    return (<h1>hello world!</h1>);
-  }
-}
-
-ReactDom.render(<App/>, document.getElementById('root'));
+ReactDom.render(<Provider><App/></Provider>, document.getElementById('root'));
