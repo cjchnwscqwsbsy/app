@@ -5,7 +5,8 @@
   "private": true,
   "sideEffects": false,
   "scripts": {
-    "build": "webpack --progress --watch --hot",
+    "build": "webpack",
+    "start": "webpack-dev-server --progress --watch --open",
     "server": "node server/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

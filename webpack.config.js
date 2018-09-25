@@ -4,6 +4,7 @@ const CleanWebpackPlugin = require('clean-webpack-plugin');
 
 module.exports = {
   entry: ['babel-polyfill',path.resolve(__dirname,'./src/index.js')],
+  mode: 'development',
   plugins: [
     new CleanWebpackPlugin(['build']),
     new HtmlWebpackPlugin({
@@ -15,13 +16,11 @@ module.exports = {
     }),
   ],
   devServer: {
-    // publicPath:,
-    contentBase:path.resolve(__dirname,'build')
+    contentBase:path.resolve(__dirname,'build'),
   },
   output: {
     path: path.resolve(__dirname,'build'),
     filename: '[name].bundle.js',
-    // publicPath: '',
   },
   module: {
     //配置加载器
