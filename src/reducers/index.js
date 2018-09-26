@@ -4,7 +4,7 @@ import cartReducer from './cart_reducer';
 
 const allReducers = {
   products:productsReducer,
-  shoppingCart:cartReducer
+  shoppingCart:cartReducer,
 };
 
 export default combineReducers(allReducers);

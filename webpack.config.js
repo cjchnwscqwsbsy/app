@@ -51,11 +51,6 @@ module.exports = {
           limit:10000
         }
       },
-    },{
-      test: /\.(js|tsx|jsx)$/,
-      enforce: 'pre',
-      exclude: /node_modules/,
-      use: 'eslint-loader'
     }]
   }
 };
