@@ -10,7 +10,7 @@ export default class App extends Component {
     };
   }
   componentDidMount(){
-    restAjax('http://127.0.0.1:8080').then(ret => {
+    restAjax('http://127.0.0.1:9090').then(ret => {
       console.log('rkxie:',ret);
       this.setState({
          testData:ret,

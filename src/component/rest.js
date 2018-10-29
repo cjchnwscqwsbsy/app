@@ -25,6 +25,7 @@ export const restAjax = (url,type,data,request) => {
                 // reject(xhr.responseJSON || err || status);
             },
             success: (result, status, xhr) => {
+                console.log('xrk:',result);
                 resolve(result);
                 // if (xhr.getResponseHeader('WWW-Authenticate') && xhr.status === 401) {
                 //     authorityCheck(xhr.getResponseHeader('WWW-Authenticate'));
