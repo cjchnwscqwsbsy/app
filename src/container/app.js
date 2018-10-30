@@ -10,10 +10,9 @@ export default class App extends Component {
     };
   }
   componentDidMount(){
-    restAjax('http://127.0.0.1:9090').then(ret => {
-      console.log('rkxie:',ret);
+    restAjax('http://192.168.64.43:9000/xrk/home').then(ret => {
       this.setState({
-         testData:ret,
+         testData:ret['meg'],
       });
     });
   }
