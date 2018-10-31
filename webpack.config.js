@@ -1,7 +1,6 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const proxy = require('http-proxy-middleware');
 
 module.exports = {
   entry: ['babel-polyfill',path.resolve(__dirname,'./src/index.js')],
@@ -19,7 +18,7 @@ module.exports = {
   ],
   devServer: {
     contentBase:path.resolve(__dirname,'build'),
-    port:9090
+    port:9000
   },
   output: {
     path: path.resolve(__dirname,'build'),
