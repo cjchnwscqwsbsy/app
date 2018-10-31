@@ -5,7 +5,7 @@ import axios from 'axios';
 export const restAxios = (url,type,data,request) => {
   return axios({
     method:type,
-    baseURL:'http://192.168.64.43:9000/xrk/',
+    baseURL:'http://192.168.64.216:9000/xrk/',
     url:url,
     params:'',
     data:data,

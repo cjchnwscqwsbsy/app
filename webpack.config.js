@@ -1,9 +1,10 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: ['babel-polyfill',path.resolve(__dirname,'./src/index.js')],
+  entry: ['babel-polyfill',path.resolve(__dirname,'./src/container/index.js')],
   mode: 'development',
   devtool: 'inline-source-map',
   plugins: [
@@ -13,8 +14,12 @@ module.exports = {
       template:'./public/index.html',
       filename:'index.html',
       title:'My App',
-      favicon:'./public/favicon.ico'
+      favicon:path.resolve(__dirname,'./public/favicon.ico')
     }),
+    new MiniCssExtractPlugin({
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
   ],
   devServer: {
     contentBase:path.resolve(__dirname,'build'),
@@ -32,7 +37,11 @@ module.exports = {
       use: 'babel-loader'
     },{
       test:/\.css$/,
+      include:[path.resolve('src')],
+      exclude: '/node_modules/',
       use:[{
+          loader: MiniCssExtractPlugin.loader
+      },{
         loader: 'style-loader'
       },{
         loader:'css-loader',
@@ -42,7 +51,43 @@ module.exports = {
       },{
         loader: 'postcss-loader',
         options: {
-          plugins:() => [require('autoprefixer'),require('precss'),require('postcss-flexbugs-fixes')]
+          ident: 'postcss',
+          plugins: (loader) => [
+            require('postcss-import')({ root: loader.resourcePath }),
+            require('postcss-cssnext')(),
+            require('autoprefixer')(),
+            require('cssnano')()
+          ]
+        }
+      }],
+    },{
+      test:/\.less$/,
+      include:[path.resolve('src')],
+      exclude: '/node_modules/',
+      use:[{
+          loader: MiniCssExtractPlugin.loader
+      },{
+        loader: 'style-loader'
+      },{
+          loader: 'css-loader',
+          options: {
+              importLoaders:1
+          }
+      },{
+        loader: 'postcss-loader',
+        options: {
+          ident: 'postcss',
+          plugins: (loader) => [
+            require('postcss-import')({ root: loader.resourcePath }),
+            require('postcss-cssnext')(),
+            require('autoprefixer')(),
+            require('cssnano')()
+          ]
+        }
+      },{
+        loader:'less-loader',
+        options: {
+          importLoaders:1
         }
       }],
     },{
