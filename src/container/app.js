@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import Test from '../component/test';
-import {restAjax} from '../component/rest';
+import {GET} from '../lib/rest';
 
 export default class App extends Component {
   constructor(props){
@@ -10,9 +10,10 @@ export default class App extends Component {
     };
   }
   componentDidMount(){
-    restAjax('http://192.168.64.43:9000/xrk/home').then(ret => {
+    GET('home').then(ret => {
+      console.log(ret);
       this.setState({
-         testData:ret['meg'],
+         testData:ret.data['meg'],
       });
     });
   }
