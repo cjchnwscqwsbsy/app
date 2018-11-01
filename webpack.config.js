@@ -41,9 +41,9 @@ module.exports = {
       exclude: '/node_modules/',
       use:[{
           loader: MiniCssExtractPlugin.loader
-      },{
-        loader: 'style-loader'
-      },{
+      },
+      'style-loader',
+      {
         loader:'css-loader',
         options: {
           importLoaders:1
@@ -65,14 +65,14 @@ module.exports = {
       include:[path.resolve('src')],
       exclude: '/node_modules/',
       use:[{
-          loader: MiniCssExtractPlugin.loader
-      },{
-        loader: 'style-loader'
-      },{
-          loader: 'css-loader',
-          options: {
-              importLoaders:1
-          }
+        loader: MiniCssExtractPlugin.loader
+      },
+      'style-loader',
+      {
+        loader: 'css-loader',
+        options: {
+          importLoaders:1
+        }
       },{
         loader: 'postcss-loader',
         options: {
