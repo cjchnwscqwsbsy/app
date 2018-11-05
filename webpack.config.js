@@ -1,10 +1,9 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
-  entry: ['babel-polyfill',path.resolve(__dirname,'./src/container/index.js')],
+  entry: ['babel-polyfill',path.resolve(__dirname,'./src/index.js')],
   mode: 'development',
   devtool: 'inline-source-map',
   plugins: [
@@ -15,15 +14,20 @@ module.exports = {
       filename:'index.html',
       title:'My App',
       favicon:path.resolve(__dirname,'./public/favicon.ico')
-    }),
-    new MiniCssExtractPlugin({
-      filename: "[name].css",
-      chunkFilename: "[id].css"
     })
   ],
   devServer: {
     contentBase:path.resolve(__dirname,'build'),
-    port:9000
+    port:9000,
+    historyApiFallback:{
+      historyApiFallback: {
+        rewrites: [
+          { from: /^\/$/, to: '/' },
+          { from: /^\/subpage/, to: '/' },
+          { from: /./, to: '/' }
+        ]
+      }
+    }
   },
   output: {
     path: path.resolve(__dirname,'build'),
@@ -39,9 +43,7 @@ module.exports = {
       test:/\.css$/,
       include:[path.resolve('src')],
       exclude: '/node_modules/',
-      use:[{
-          loader: MiniCssExtractPlugin.loader
-      },
+      use:[
       'style-loader',
       {
         loader:'css-loader',
@@ -64,9 +66,7 @@ module.exports = {
       test:/\.less$/,
       include:[path.resolve('src')],
       exclude: '/node_modules/',
-      use:[{
-        loader: MiniCssExtractPlugin.loader
-      },
+      use:[
       'style-loader',
       {
         loader: 'css-loader',

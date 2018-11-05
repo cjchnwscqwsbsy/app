@@ -7,9 +7,9 @@ class Test extends React.Component{
     console.log(nextProps);
   }
   render(){
-    const { prefix = 'xrk' } = this.props;
+    const { prefix = 'xrk', text = 'dsfdf' } = this.props;
     return (
-      <li className={`${prefix}-test`}>{this.props.text}</li>
+      <li className={`${prefix}-test`}>{text}</li>
     );
   }
 }
