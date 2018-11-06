@@ -1,11 +1,12 @@
 import React from 'react';
 import $ from 'jquery';
 import axios from 'axios';
+import profile from '../../profile';
 
 export const restAxios = (url,type,data,request) => {
   return axios({
     method:type,
-    baseURL:'http://192.168.64.216:9000/xrk/',
+    baseURL:profile.baseUrl,
     url:url,
     params:'',
     data:data,
