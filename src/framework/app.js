@@ -1,8 +1,7 @@
 import React, {Component, Fragment} from 'react';
 import {BrowserRouter, Route, NavLink} from 'react-router-dom';
-import Test from '../../component/test';
-import {GET} from '../../lib/rest';
-import './style/index.less';
+import Container from './Container';
+import {GET} from '../lib/rest';
 
 export default class App extends Component {
   constructor(props){
@@ -30,7 +29,10 @@ export default class App extends Component {
     console.log('====> ',props);
     if (props)
     return (
-      <Test text={this.state.testData}/>
+      <Container resetUrl={this.handleUrl}/>
     );
+  };
+  handleUrl = (value) => {
+
   };
 }
