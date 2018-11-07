@@ -12,7 +12,7 @@ module.exports = {
       // 指定模板路径、文件名、标题
       template:'./public/index.html',
       filename:'index.html',
-      title:'My App',
+      title:'Civilian Economy',
       favicon:path.resolve(__dirname,'./public/favicon.ico')
     })
   ],
