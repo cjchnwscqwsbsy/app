@@ -1,7 +1,4 @@
-import React, {Component} from 'react';
+import MenuShort from './MenuShort';
+import PublicVersion from './PublicVersion';
 
-export default class DashBoard extends Component{
-    render(){
-        return (<div>DashBoard</div>);
-    }
-}
+export {MenuShort ,PublicVersion};

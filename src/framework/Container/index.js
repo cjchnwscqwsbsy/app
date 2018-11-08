@@ -1,36 +1,54 @@
 import React, {Component, Fragment} from 'react';
+import {BrowserRouter, Route, NavLink} from 'react-router-dom';
 import * as Com from '../index';
 import './style/index.less';
+import {GET} from "../../lib/rest";
 
-export default class Container extends Component {
+export default class App extends Component {
     constructor(props){
         super(props);
         this.state = {
-            renderCom:'Welcome',
+            testData:'hello world!',
         };
     }
+    componentDidMount(){
+        GET('home').then(ret => {
+            console.log(ret);
+            this.setState({
+                testData:ret.data['meg'],
+            });
+        });
+    }
     render(){
-        const { renderCom } = this.state;
         return (
-            <div className={`app-container`}>
-                <div className={`app-container-nav`}>
-                    <span onClick={() => this.handleOnClick('Welcome')}>welcome</span>
-                    <span onClick={() => this.handleOnClick('DashBoard')}>dashboard</span>
+            <BrowserRouter basename='/'>
+                <div className={`app-container`}>
+                    <div className={`app-container-nav`}>
+                        <NavLink to='/'>Welcome</NavLink>
+                        <NavLink to='/DashBoard/MenuShort'>MenuShort</NavLink>
+                        <NavLink to='/DashBoard/PublicVersion'>PublicVersion</NavLink>
+                    </div>
+                    <div className={`app-container-body`}>
+                        <Route path='/' render={this.renderRoute}/>
+                    </div>
                 </div>
-                <div className={`app-container-body`}>
-                    {this.getObj(renderCom)}
-                </div>
-            </div>
+            </BrowserRouter>
         );
     }
-    handleOnClick = (value) => {
-        this.setState({
-            renderCom:value,
-        });
+    renderRoute = (props) => {
+        const page = props.location.pathname.split('/').filter(fit => fit !== '');
+        return this.getObj(page);
     };
     getObj = (value) => {
-        console.log(Com,'asd:',Com[value]);
-        const Compoent = Com[value];
+        if (value.length) {
+            let Compoent = Com;
+            value.forEach(item => {
+                console.log('====> ',item);
+                Compoent = Compoent[item]
+            });
+            return <Compoent/>;
+        }
+        const Compoent = Com['Welcome'];
         return <Compoent/>;
     };
 }

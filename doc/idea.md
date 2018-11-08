@@ -25,6 +25,8 @@
 - BigInt JavaScript中任意精度整数
 - import export用法不熟练
 - 算法薄弱
+- 正则表达式
+    - 将如'/DashBoard/PublicNotice/....'的url地址转成数组
 
 ### 技能训练
 - 每天完成一个算法，内容不限
