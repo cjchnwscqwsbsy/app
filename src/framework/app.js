@@ -29,10 +29,7 @@ export default class App extends Component {
     console.log('====> ',props);
     if (props)
     return (
-      <Container resetUrl={this.handleUrl}/>
+      <Container />
     );
-  };
-  handleUrl = (value) => {
-
   };
 }

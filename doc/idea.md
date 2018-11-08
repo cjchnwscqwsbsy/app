@@ -22,3 +22,9 @@
 - height铺满屏幕
     - vh
 - webpack有针对性的自动生成索引文件
+- BigInt JavaScript中任意精度整数
+- import export用法不熟练
+- 算法薄弱
+
+### 技能训练
+- 每天完成一个算法，内容不限
