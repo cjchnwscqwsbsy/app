@@ -1,8 +1,8 @@
 import React, {Component, Fragment} from 'react';
 import {BrowserRouter, Route, NavLink} from 'react-router-dom';
+import {GET} from "../../lib/rest";
 import * as Com from '../index';
 import './style/index.less';
-import {GET} from "../../lib/rest";
 
 export default class App extends Component {
     constructor(props){
@@ -37,9 +37,9 @@ export default class App extends Component {
     }
     renderRoute = (props) => {
         const page = props.location.pathname.split('/').filter(fit => fit !== '');
-        return this.getObj(page);
+        return this.renderCom(page);
     };
-    getObj = (value) => {
+    renderCom = (value) => {
         if (value.length) {
             let Compoent = Com;
             value.forEach(item => {

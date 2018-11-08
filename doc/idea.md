@@ -27,6 +27,17 @@
 - 算法薄弱
 - 正则表达式
     - 将如'/DashBoard/PublicNotice/....'的url地址转成数组
+- webpack devServer配置
 
 ### 技能训练
 - 每天完成一个算法，内容不限
+
+### 记录
+- 更新全局包：
+npm update <name> -g
+
+- 更新生产环境依赖包：
+npm update <name> --save
+
+- 更新开发环境依赖包：
+npm update <name> --save-dev
