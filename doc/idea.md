@@ -27,10 +27,15 @@
 - 算法薄弱
 - 正则表达式
     - 将如'/DashBoard/PublicNotice/....'的url地址转成数组
+    - 判断字符串中空格：/\s+/g.test('rkxie xrk')
+    - 匹配以/开头的所有url: /DashBoard/MenuShort
 - webpack devServer配置
+- JavaScript字符串换行问题
+- zeroconf
+- 重新封装axios
 
 ### 技能训练
-- 每天完成一个算法，内容不限
+- 每周熟练掌握一个算法并将之拓展，内容不限
 
 ### 记录
 - 更新全局包：

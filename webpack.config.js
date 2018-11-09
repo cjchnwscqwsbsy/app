@@ -19,19 +19,20 @@ module.exports = {
   devServer: {
     contentBase:path.resolve(__dirname,'build'),
     port:9000,
-    historyApiFallback:{
-      historyApiFallback: {
-        rewrites: [
-          { from: /^\/$/, to: '/' },
-          { from: /^\/subpage/, to: '/' },
-          { from: /./, to: '/' }
-        ]
+    historyApiFallback: true,
+    publicPath: 'http://127.0.0.1:9000/',
+    proxy:{
+      '/xrk':{
+        target:'http://127.0.0.1:9000',
+        changeOrigin: true,
+        pathRewrite:{'^/xrk':'/'}
       }
     }
   },
   output: {
     path: path.resolve(__dirname,'build'),
     filename: '[name].bundle.js',
+    publicPath: 'http://127.0.0.1:9000/',
   },
   module: {
     //配置加载器

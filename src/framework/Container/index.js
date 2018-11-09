@@ -1,4 +1,4 @@
-import React, {Component, Fragment} from 'react';
+import React, {Component} from 'react';
 import {BrowserRouter, Route, NavLink} from 'react-router-dom';
 import {GET} from "../../lib/rest";
 import * as Com from '../index';
@@ -9,19 +9,21 @@ export default class App extends Component {
         super(props);
         this.state = {
             testData:'hello world!',
+            navMenu:[],
         };
     }
     componentDidMount(){
-        GET('home').then(ret => {
-            console.log(ret);
+        GET('navmenu').then(ret => {
+            console.log('safouhuih:',ret);
             this.setState({
-                testData:ret.data['meg'],
+                // testData:ret[0].data['meg'],
+                navMenu:ret['menuList']
             });
         });
     }
     render(){
         return (
-            <BrowserRouter basename='/'>
+            <BrowserRouter basename='/xrk'>
                 <div className={`app-container`}>
                     <div className={`app-container-nav`}>
                         <NavLink to='/'>Welcome</NavLink>
